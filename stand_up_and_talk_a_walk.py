@@ -7,13 +7,14 @@ from tkinter import messagebox
 
 # For the health of people who sit for long periods of time, this script will remind you to stand up and take a walk at regular intervals (default each 30 minutes).
 # Github: https://github.com/Chiaki2333/stand_up_and_take_a_walk
-# Version: 1.1
+# Version: 1.2
 
 def remind(root, current_time):
-    # 创建置顶的弹出框
-    messagebox.showwarning("Stand up and take a walk!", "It is " + current_time + " now.\nIt's time to stand up and take a walk!")
     root.wm_attributes("-topmost", True)  # 将弹出框置顶显示
     root.wm_attributes("-disabled", True)  # 将弹出框置顶显示
+    # 创建置顶的弹出框
+    messagebox.showwarning("Stand up and take a walk!", "It is " + current_time + " now.\nIt's time to stand up and take a walk!")
+
     
 @click.command()
 @click.option("--each", default=30, help="How many minutes do I remind you to stand up and take a walk?(default=30)", type=int)
@@ -21,9 +22,10 @@ def main(each):
     # 创建主窗口
     root = tk.Tk()
     root.withdraw()  # 隐藏主窗口
-    messagebox.showinfo("Info", "For the health of people who sit for long periods of time, this script will remind you to stand up and take a walk each " + str(each) + " minutes.")
     root.wm_attributes("-topmost", True)  # 将弹出框置顶显示
     root.wm_attributes("-disabled", True)  # 将弹出框置顶显示
+    #messagebox.showinfo("Info", "For the health of people who sit for long periods of time, this script will remind you to stand up and take a walk each " + str(each) + " minutes.")
+
     while True:
         tmp = time.time()
         dt_object = datetime.fromtimestamp(tmp)
